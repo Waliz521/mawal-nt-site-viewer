@@ -7,7 +7,7 @@ const faviconSvg = fs.readFileSync(path.resolve('public/favicon.svg'));
 
 export default defineConfig({
   build: {
-    outDir: '../dist',
+    outDir: process.env.VERCEL_BUILD_OUTDIR || 'dist',
     emptyOutDir: true,
   },
   plugins: [

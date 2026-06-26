@@ -156,8 +156,14 @@ npm run preview --workspace=web
 
 Push the **`site-viewer/`** folder as the repo root (not the parent GIS project with `Site */` folders).
 
-1. Create a GitHub repo and push this folder.
-2. Import the repo in [Vercel](https://vercel.com/new) — settings are read from `vercel.json`.
+**Recommended:** set Vercel **Root Directory** to `web` (Project Settings → General). The repo includes `web/vercel.json` for that layout.
+
+| Setting | Root Directory = `web` | Root Directory = empty |
+|---------|------------------------|-------------------------|
+| Root Directory | `web` | *(leave blank)* |
+| Output Directory | *(leave blank — uses `dist`)* | *(leave blank — uses `dist`)* |
+| Framework Preset | Other | Other |
+
 3. Add **Environment Variables** (Production + Preview):
 
    | Name | Value |
