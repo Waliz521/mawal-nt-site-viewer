@@ -1,0 +1,20 @@
+{
+  "name": "mawal-site-viewer",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Internal web app for Mawal Energy — NT community power-station site maps, KML layers, and traffic-light assessments.",
+  "workspaces": [
+    "scripts",
+    "web"
+  ],
+  "scripts": {
+    "ingest": "npm run ingest --workspace=scripts",
+    "ingest:dry": "npm run ingest:dry --workspace=scripts",
+    "setup:db": "npm run setup:db --workspace=scripts",
+    "dev": "npm run dev --workspace=web",
+    "build": "npm run build --workspace=web"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

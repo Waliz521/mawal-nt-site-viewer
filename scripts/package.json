@@ -1,0 +1,20 @@
+{
+  "name": "site-viewer-scripts",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "ingest": "node ingest.mjs",
+    "ingest:dry": "node ingest.mjs --dry-run",
+    "setup:db": "node apply-anon-policies.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "@tmcw/togeojson": "^7.1.2",
+    "@turf/area": "^7.2.0",
+    "@xmldom/xmldom": "^0.9.8",
+    "dotenv": "^16.4.7",
+    "pg": "^8.13.3",
+    "xlsx": "^0.18.5"
+  }
+}
