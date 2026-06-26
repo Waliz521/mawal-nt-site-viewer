@@ -6,6 +6,10 @@ import path from 'node:path';
 const faviconSvg = fs.readFileSync(path.resolve('public/favicon.svg'));
 
 export default defineConfig({
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true,
+  },
   plugins: [
     react(),
     {
