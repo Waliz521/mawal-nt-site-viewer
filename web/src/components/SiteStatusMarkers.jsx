@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { CircleMarker, Popup } from 'react-leaflet';
 import { boundsFromLayers } from '../lib/geojson';
 import { trafficLightMarkerStyle } from '../lib/trafficLight';
+import { SITE_MARKER_PANE } from './SiteMarkerPaneSetup';
 
 function escapeHtml(text) {
   return String(text ?? '')
@@ -56,6 +57,7 @@ export default function SiteStatusMarkers({
             key={site.id}
             center={position}
             radius={9}
+            pane={SITE_MARKER_PANE}
             pathOptions={{
               color: style.stroke,
               weight: 2,

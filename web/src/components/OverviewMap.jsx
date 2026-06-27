@@ -1,6 +1,8 @@
 import { useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
+import BoundaryPaneSetup from './BoundaryPaneSetup';
 import MapBoundaryLayers, { IndigenousZoomBridge } from './MapBoundaryLayers';
+import SiteMarkerPaneSetup from './SiteMarkerPaneSetup';
 import SiteStatusMarkers from './SiteStatusMarkers';
 import SiteZoomBridge from './SiteZoomBridge';
 import {
@@ -79,6 +81,8 @@ export default function OverviewMap({
         maxZoom={20}
       />
       <FitNorthernTerritory />
+      <BoundaryPaneSetup />
+      <SiteMarkerPaneSetup />
       <MapBoundaryLayers
         showTerritory={showTerritory}
         indigenousGeoJson={indigenousGeoJson}

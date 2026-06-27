@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { GeoJSON, useMap } from 'react-leaflet';
+import { BOUNDARY_PANE, fetchNtBoundaryGeoJson } from '../lib/boundaries';
 import { boundsFromFeature } from '../lib/geojson';
 
 function escapeHtml(text) {
@@ -37,8 +38,7 @@ function NtBoundaryLayer({ visible }) {
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/boundaries/nt-boundary.geojson')
-      .then((res) => res.json())
+    fetchNtBoundaryGeoJson()
       .then((json) => {
         if (!cancelled) setData(json);
       })
@@ -55,13 +55,9 @@ function NtBoundaryLayer({ visible }) {
   return (
     <GeoJSON
       data={data}
+      pane={BOUNDARY_PANE}
       style={() => NT_BOUNDARY_STYLE}
-      onEachFeature={(feature, layer) => {
-        const props = feature.properties ?? {};
-        layer.bindPopup(
-          `<strong>${escapeHtml(props.STE_NAME21 ?? 'Northern Territory')}</strong>`,
-        );
-      }}
+      interactive={false}
     />
   );
 }
@@ -104,6 +100,7 @@ export default function MapBoundaryLayers({
         <GeoJSON
           key={`iloc-${selectedIndigenousCode || 'all'}-${indigenousGeoJson.features?.length ?? 0}`}
           data={indigenousGeoJson}
+          pane={BOUNDARY_PANE}
           style={() =>
             selectedIndigenousCode ? INDIGENOUS_SELECTED_STYLE : INDIGENOUS_STYLE
           }

@@ -1,4 +1,16 @@
 export const INDIGENOUS_LOCATIONS_URL = '/boundaries/nt-indigenous-locations.geojson';
+export const NT_BOUNDARY_URL = '/boundaries/nt-boundary.geojson';
+
+/** Leaflet pane for reference boundaries — below KML layers and site markers. */
+export const BOUNDARY_PANE = 'boundary-reference';
+
+export async function fetchNtBoundaryGeoJson() {
+  const response = await fetch(NT_BOUNDARY_URL);
+  if (!response.ok) {
+    throw new Error('Failed to load NT boundary');
+  }
+  return response.json();
+}
 
 export async function fetchIndigenousLocationsGeoJson() {
   const response = await fetch(INDIGENOUS_LOCATIONS_URL);
