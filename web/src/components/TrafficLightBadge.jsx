@@ -1,15 +1,11 @@
-const STYLES = {
-  GREEN: { bg: '#dcfce7', text: '#166534', border: '#86efac' },
-  AMBER: { bg: '#fef3c7', text: '#92400e', border: '#fcd34d' },
-  RED: { bg: '#fee2e2', text: '#991b1b', border: '#fca5a5' },
-};
+import { TRAFFIC_LIGHT_BADGE_STYLES } from '../lib/trafficLight';
 
 export default function TrafficLightBadge({ rating, large = false }) {
   if (!rating) {
     return <span className={`badge badge-muted ${large ? 'badge-lg' : ''}`}>N/A</span>;
   }
 
-  const style = STYLES[rating] ?? STYLES.GREEN;
+  const style = TRAFFIC_LIGHT_BADGE_STYLES[rating] ?? TRAFFIC_LIGHT_BADGE_STYLES.GREEN;
 
   return (
     <span

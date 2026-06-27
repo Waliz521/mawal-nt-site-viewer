@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
 import MapBoundaryLayers, { IndigenousZoomBridge } from './MapBoundaryLayers';
+import SiteStatusMarkers from './SiteStatusMarkers';
 import SiteZoomBridge from './SiteZoomBridge';
 import {
   NT_BOUNDS,
@@ -34,6 +35,7 @@ export default function OverviewMap({
   sites = [],
   layers = [],
   visibleLayerIds = new Set(),
+  visibleSiteIds = null,
   showTerritory = true,
   indigenousGeoJson = null,
   selectedIndigenousCode = '',
@@ -99,6 +101,15 @@ export default function OverviewMap({
             `<strong>${escapeHtml(p._layerName)}</strong>${siteLink}<br/>${Number(p._areaM2).toLocaleString('en-AU', { maximumFractionDigits: 1 })} m²`,
           );
         }}
+      />
+      <SiteStatusMarkers
+        sites={sites}
+        layers={safeLayers}
+        visibleSiteIds={
+          visibleSiteIds instanceof Set
+            ? visibleSiteIds
+            : new Set(sites.map((s) => s.id))
+        }
       />
       <IndigenousZoomBridge
         locations={indigenousLocations}
